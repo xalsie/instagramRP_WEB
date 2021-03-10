@@ -1,30 +1,40 @@
-<?php 
-include_once("../includes/inc.php");
+<?php
+if (empty(@$_SERVER["DOCUMENT_ROOT"]) || @$_SERVER["DOCUMENT_ROOT"] == "C:/wamp64/www") {
+  $path = "C:/wamp64/www/intagramRP_WEB";
+} else {
+  $path = $_SERVER["DOCUMENT_ROOT"];
+}
+include_once($path."/includes/inc.php");
 
 $logError = "";
 
 //est ce que j'ai un email un mot de passe dans $_POST
-if( !empty($_POST['email']) && !empty($_POST['pwd'])){
+if(!empty($_POST['email']) && !empty($_POST['pwd'])) {
 //SI oui
   //Connexion à la bdd
-  $pdo = connectDB();
-  //"SELECT pwd FROM n2p_users WHERE email=:email"
-  $queryPrepared = $pdo->prepare("SELECT id, email, pwd FROM users WHERE email=:email");
-  //execute
-  $queryPrepared->execute([
-                            ":email"=>strtolower($_POST['email'])
-                          ]);
-  //fetch
-  $result = $queryPrepared->fetch();
+  // $pdo = connectDB();
+  // //"SELECT pwd FROM n2p_users WHERE email=:email"
+  // $queryPrepared = $pdo->prepare("SELECT id, email, pwd FROM users WHERE email=:email");
+  // //execute
+  // $queryPrepared->execute([
+  //                           ":email"=>strtolower($_POST['email'])
+  //                         ]);
+  // //fetch
+  // $result = $queryPrepared->fetch();
+
+  $SQL = "SELECT `id`, `email`, `password` FROM `users` WHERE email = '".strtolower($_POST['email'])."';";
+  echo $SQL;
+    $result = db_query($SQL)[0];
+
   //Si pwd non vide alors
-  if(!empty($result["pwd"]) && password_Verify($_POST['pwd'], $result["pwd"]) ){
+  if(!empty($result["password"]) && password_Verify($_POST['pwd'], $result["password"]) ){
   //password_verify
     //SI oui -> Afficher OK 
     
-    //$result = [ "id"=>"3", "email"=>"y.skrzyp@gmail.com", "pwd"=>"gdfgsd"]
+    //$result = [ "id"=>"1", "email"=>"gg@gmail.com", "pwd"=>"gdfgsd"]
     login($result);
 
-    header("Location: index.php");
+    header("Location: ../index.php");
 
   }else{
     //SI non -> Afficher dans une alert rouge "identifiants incorrects"
@@ -60,12 +70,14 @@ if( !empty($_POST['email']) && !empty($_POST['pwd'])){
       Updated: January 11, 2021
       Theme by: LeGrizzly - LeGrizzly#0341
       Support: LeGrizzly#0341
-        _____ __        __        __  __      __       __
-        / ___// /___  __/ /__     / / / /___ _/ /______/ /_
-        \__ \/ __/ / / / / _ \   / /_/ / __ `/ __/ ___/ __ \
-      ___/ / /_/ /_/ / /  __/  / __  / /_/ / /_/ /__/ / / /
-      /____/\__/\__, /_/\___/  /_/ /_/\__,_/\__/\___/_/ /_/
-              /____/
+       _                _____          _               _         
+      | |              / ____|        (_)             | |        
+      | |        ___  | |  __   _ __   _   ____  ____ | |  _   _ 
+      | |       / _ \ | | |_ | | \'__| | | |_  / |_  / | | | | | |
+      | |____  |  __/ | |__| | | |    | |  / /   / /  | | | |_| |
+      |______|  \___|  \_____| |_|    |_| /___| /___| |_|  \__, |
+                                                            __/ |
+                                                            |___/
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     -->
 
@@ -154,5 +166,5 @@ if( !empty($_POST['email']) && !empty($_POST['pwd'])){
       </div>
     </div>
 
-    </body>
+  </body>
 </html>

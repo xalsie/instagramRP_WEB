@@ -1,13 +1,21 @@
 <?php
-  include_once("../includes/inc.php");
+if (empty(@$_SERVER["DOCUMENT_ROOT"]) || @$_SERVER["DOCUMENT_ROOT"] == "C:/wamp64/www") {
+  $path = "C:/wamp64/www/intagramRP_WEB";
+} else {
+  $path = $_SERVER["DOCUMENT_ROOT"];
+}
+include_once($path."/includes/inc.php");
 ?>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="LeGrizzly#0341, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.79.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="French">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="instagram rp">
+    <meta name="keywords" content="insta,rp,united,photo,gta,five,fivem,gta online,gta server">
+    <meta name="author" content="LeGrizzly#0341">
     <title>Register panel</title>
 
     <!--
@@ -16,12 +24,14 @@
       Updated: January 11, 2021
       Theme by: LeGrizzly - LeGrizzly#0341
       Support: LeGrizzly#0341
-        _____ __        __        __  __      __       __
-        / ___// /___  __/ /__     / / / /___ _/ /______/ /_
-        \__ \/ __/ / / / / _ \   / /_/ / __ `/ __/ ___/ __ \
-      ___/ / /_/ /_/ / /  __/  / __  / /_/ / /_/ /__/ / / /
-      /____/\__/\__, /_/\___/  /_/ /_/\__,_/\__/\___/_/ /_/
-              /____/
+       _                _____          _               _         
+      | |              / ____|        (_)             | |        
+      | |        ___  | |  __   _ __   _   ____  ____ | |  _   _ 
+      | |       / _ \ | | |_ | | \'__| | | |_  / |_  / | | | | | |
+      | |____  |  __/ | |__| | | |    | |  / /   / /  | | | |_| |
+      |______|  \___|  \_____| |_|    |_| /___| /___| |_|  \__, |
+                                                            __/ |
+                                                            |___/
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     -->
 
@@ -91,24 +101,24 @@
                     
                     <input 
                       type="text" 
-                      id="firstName" 
-                      name="firstName" 
+                      id="namePR" 
+                      name="namePR" 
                       class="form-control" 
-                      placeholder="First name" 
+                      placeholder="Your name RP" 
                       required="required" 
                       autofocus="autofocus"
-                      value="<?php echo (isset($_SESSION["errorsInput"]))?$_SESSION["errorsInput"]["firstName"]:"";?>"
+                      value="<?php echo (isset($_SESSION["errorsInput"]))?$_SESSION["errorsInput"]["namePR"]:"";?>"
                       >
 
 
-                    <label for="firstName">Pseudo RP</label>
+                    <label for="namePR">Pseudo RP</label>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-floating">
-                    <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last name" required="required"
-                      value="<?php echo (isset($_SESSION["errorsInput"]))?$_SESSION["errorsInput"]["lastName"]:"";?>">
-                    <label for="lastName">Indentifiant Discord</label>
+                    <input type="text" id="nameDiscord" name="nameDiscord" class="form-control" placeholder="Your identifiant Discord" required="required"
+                      value="<?php echo (isset($_SESSION["errorsInput"]))?$_SESSION["errorsInput"]["nameDiscord"]:"";?>">
+                    <label for="nameDiscord">Indentifiant Discord</label>
                   </div>
                 </div>
               </div>
@@ -137,7 +147,7 @@
               </div>
             </div>
             
-            <input type="submit"  class="btn btn-primary btn-block" value="Register">
+            <input type="submit" class="btn btn-primary btn-block" value="Register">
 
           </form>
           <div class="text-center">

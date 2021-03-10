@@ -4,13 +4,16 @@
 	
 function Header_HTML($Title="", $IncludeHeader="") {
 	$ret='<!doctype html>
-<html lang="en">
+<html lang="en" ng-app="appRoot">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="LeGrizzly#0341, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.79.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="French">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="instagram rp">
+    <meta name="keywords" content="insta,rp,united,photo,gta,five,fivem,gta online,gta server">
+    <meta name="author" content="LeGrizzly#0341">
+
     <title>'.$Title.'</title>
 
     <!--
@@ -19,20 +22,22 @@ function Header_HTML($Title="", $IncludeHeader="") {
       Updated: January 11, 2021
       Theme by: LeGrizzly - LeGrizzly#0341
       Support: LeGrizzly#0341
-        _____ __        __        __  __      __       __
-        / ___// /___  __/ /__     / / / /___ _/ /______/ /_
-        \__ \/ __/ / / / / _ \   / /_/ / __ `/ __/ ___/ __ \
-      ___/ / /_/ /_/ / /  __/  / __  / /_/ / /_/ /__/ / / /
-      /____/\__/\__, /_/\___/  /_/ /_/\__,_/\__/\___/_/ /_/
-              /____/
+       _                _____          _               _         
+      | |              / ____|        (_)             | |        
+      | |        ___  | |  __   _ __   _   ____  ____ | |  _   _ 
+      | |       / _ \ | | |_ | | \'__| | | |_  / |_  / | | | | | |
+      | |____  |  __/ | |__| | | |    | |  / /   / /  | | | |_| |
+      |______|  \___|  \_____| |_|    |_| /___| /___| |_|  \__, |
+                                                            __/ |
+                                                            |___/
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     -->
 
     <!-- Bootstrap core CSS -->
-    <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./assets/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
-    <link href="./assets/bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">
-    <link href="./assets/bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet">
+    <link href="./assets/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/Bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
+    <link href="./assets/Bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">
+    <link href="./assets/Bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet">
 
     <!-- Favicons -->
     <!-- <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -43,6 +48,10 @@ function Header_HTML($Title="", $IncludeHeader="") {
     <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico"> -->
     <meta name="theme-color" content="#7952b3">
 
+    <!-- AngularJs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="./assets/js/app-angular.js"></script>
+
     <!-- Script init -->
     <script src="./assets/jQuery/js/jquery.min.js"></script>
 
@@ -50,13 +59,21 @@ function Header_HTML($Title="", $IncludeHeader="") {
     <link href="./assets/SweetAlert2/css/sweetalert2.min.css" rel="stylesheet">
     <script src="./assets/SweetAlert2/js/sweetalert2.min.js"></script>
 
-    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script src="./assets/Bootstrap/js/bootstrap.min.js"></script>
+    <script src="./assets/Bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <script src="./assets/Isotope/js/isotope.pkgd.min.js"></script>
-    <!-- script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js" crossorigin="anonymous"></script -->
-    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-11FC0M78QZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+
+      gtag("config", "G-11FC0M78QZ");
+    </script>
+
 
     <style>
       .bd-placeholder-img {
@@ -75,13 +92,13 @@ function Header_HTML($Title="", $IncludeHeader="") {
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="./assets/css/home.css?v=0.1" rel="stylesheet">
+    <link href="./assets/css/home.css?v=1.0.6" rel="stylesheet">
 	
 	<!-- Import Auto script -->
 	'.$IncludeHeader.'
 
   </head>
-  <body>';
+  <body ng-controller="appSidebar">';
 	return $ret;
 }
 	
