@@ -47,7 +47,7 @@
                         console.log("load finish");
 
                         setTimeout(() => {
-                            $("#sidebarMenu").removeClass("removeForAlign").css("top", "49px");
+                            $("#sidebarMenu").removeClass("removeForAlign").css("top", "48.1px");
                         }, 300);
 
                         setTimeout(() => {

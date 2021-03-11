@@ -82,10 +82,10 @@ if(!empty($_POST['email']) && !empty($_POST['pwd'])) {
     -->
 
     <!-- Bootstrap core CSS -->
-    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
-    <link href="../assets/bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">
-    <link href="../assets/bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet">
+    <link href="../assets/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/Bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
+    <link href="../assets/Bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">
+    <link href="../assets/Bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet">
 
     <!-- Favicons -->
     <!-- <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -96,18 +96,32 @@ if(!empty($_POST['email']) && !empty($_POST['pwd'])) {
     <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico"> -->
     <meta name="theme-color" content="#7952b3">
 
+    <!-- AngularJs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script href="../assets/js/app-angular.js"></script>
+
     <!-- Script init -->
-    <script src="../assets/jQuery/js/jquery.min.js"></script>
+    <script href="../assets/jQuery/js/jquery.min.js"></script>
 
     <!-- SweetAlert2 -->
     <link href="../assets/SweetAlert2/css/sweetalert2.min.css" rel="stylesheet">
-    <script src="../assets/SweetAlert2/js/sweetalert2.min.js"></script>
+    <script href="../assets/SweetAlert2/js/sweetalert2.min.js"></script>
 
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script href="../assets/Bootstrap/js/bootstrap.min.js"></script>
+    <script href="../assets/Bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom styles for this template -->
-    <link href="../assets/css/home.css?v=0.1" rel="stylesheet">
+    <link href="../assets/css/home.css?v=1.0.6" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-11FC0M78QZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+
+      gtag("config", "G-11FC0M78QZ");
+    </script>
 
     <style>
     .form-group {
