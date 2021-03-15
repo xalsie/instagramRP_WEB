@@ -92,11 +92,11 @@
 </style>
 
 <header class="navbar sticky-top flex-md-nowrap p-0">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 logo-webfont" href="#">Instagram RP</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 logo-webfont" ng-class="{ headerLogo: isSet(2) }" href="#">Instagram RP</a>
+  <!-- <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="w-100">
+  </button> -->
+  <div class="w-100" ng-class="{ headerSearch: !isSet(2) }">
     <input class="form-control w-100" id="searchInput" type="text" placeholder="Search" aria-label="Search" style="padding-left: 40px;">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" style="position: relative; top: -36px; left: 16px; color: #5F5F5F;">
       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -115,7 +115,7 @@
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar removeForAlign collapse">
       <div class="position-sticky pt-3">
-        <ul class="nav flex-column" ng-if="getAuth">
+        <ul class="nav flex-column" ng-if="getAuth" ng-class="{ profileImg: getAuth }" style="display: none;">
           <div class="col" style="text-align: center;">
             <svg class="bd-placeholder-img rounded-circle" width="90" height="90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
               <title>Placeholder</title>
@@ -161,7 +161,22 @@
         <div class="" ng-if="getAuth">
           <ul class="nav flex-column mb-2">
             <li class="nav-item">
+              <a class="nav-link" href="/Profile/index.php?userid=">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="-1 -1 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>
+                <span data-feather="file-text">Profile</span>
+              </a>
+            </li>
+          </ul>
+
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
               <a class="nav-link" href="Administration/logout.php?logout">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16" transform="rotate(90)">
+                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                  <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                </svg>
                 <span data-feather="file-text">Logout</span>
               </a>
             </li>
@@ -226,41 +241,46 @@
 
         <div ng-show="isSet(3)" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 
-        <div ng-show="isSet(4)" role="tabpanel" aria-labelledby="nav-contact-tab">Page Profile!</div>
+        <div ng-show="isSet(4)" role="tabpanel" aria-labelledby="nav-contact-tab">
+          <h3>Page Profile!</h3>
+          <hr>
+          <a href="/Profile/index.php?userid=">Go to page profile</a>
+        </div>
       </div>
 
-
     </main>
-
   </div>
 
 
-  <div id="nav-menu" class="container" style="
-    color: #000;
-    background-color: #fff;
-    left: 0;
-    bottom: 0;
-    height: 60px;
-    width: 100%;
-    position: fixed;
-    z-index: 5;">
-        <div class="row align-items-center">
-          <div class="col" ng-class="{ active: isSet(1) }" ng-click="setTab(1)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-radios-grid" viewBox="-1 -1 18 18">
-              <path d="M 3.5 15 a 2.5 2.5 0 1 0 0 -5 a 2.5 2.5 0 0 0 0 5 z m 9 -9 a 2.5 2.5 0 1 0 0 -5 a 2.5 2.5 0 0 0 0 5 z m 0 9 a 2.5 2.5 0 1 1 0 -5 a 2.5 2.5 0 0 1 0 5 z M 16 3.5 A 3.5 3.5 0 1 1 9 3.5 a 3.5 3.5 0 0 1 7 0 z m -9 9 a 3.5 3.5 0 1 1 -7 0 a 3.5 3.5 0 0 1 7 0 z m 5.5 3.5 a 3.5 3.5 0 1 0 0 -7 a 3.5 3.5 0 0 0 0 7 z m -9 -9 a 3.5 3.5 0 1 0 0 -7 a 3.5 3.5 0 0 0 0 7 z m 0 -1 a 2.5 2.5 0 1 1 0 -5 a 2.5 2.5 0 0 1 0 5 z"/>
-            </svg>
-          </div>
-          <div class="col" ng-class="{ active: isSet(2) }" ng-click="setTab(2)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="-1 -1 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
-            </svg>
-          </div>
-          <div class="col" ng-class="{ active: isSet(4) }" ng-click="setTab(4)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="-1 -1 16 16">
-              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-            </svg>
-          </div>
-        </div>
+  <div id="nav-menu">
+    <div class="row align-items-center">
+      <div class="col" ng-class="{ active: isSet(1) }" ng-click="setTab(1)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-radios-grid" viewBox="-1 -1 18 18">
+          <path d="M 3.5 15 a 2.5 2.5 0 1 0 0 -5 a 2.5 2.5 0 0 0 0 5 z m 9 -9 a 2.5 2.5 0 1 0 0 -5 a 2.5 2.5 0 0 0 0 5 z m 0 9 a 2.5 2.5 0 1 1 0 -5 a 2.5 2.5 0 0 1 0 5 z M 16 3.5 A 3.5 3.5 0 1 1 9 3.5 a 3.5 3.5 0 0 1 7 0 z m -9 9 a 3.5 3.5 0 1 1 -7 0 a 3.5 3.5 0 0 1 7 0 z m 5.5 3.5 a 3.5 3.5 0 1 0 0 -7 a 3.5 3.5 0 0 0 0 7 z m -9 -9 a 3.5 3.5 0 1 0 0 -7 a 3.5 3.5 0 0 0 0 7 z m 0 -1 a 2.5 2.5 0 1 1 0 -5 a 2.5 2.5 0 0 1 0 5 z"/>
+        </svg>
+      </div>
+      <div class="col" ng-class="{ active: isSet(2) }" ng-click="setTab(2)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="-1 -1 16 16">
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+        </svg>
+      </div>
+
+      <div class="col" ng-if="!getAuth">
+        <a class="nav-link" href="Administration/login.php">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+            <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="col" ng-if="getAuth" ng-class="{ active: isSet(4) }" ng-click="setTab(4)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="-1 -1 16 16">
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        </svg>
+      </div>
+
+    </div>
   </div>
 </div>
 <script src="./assets/js/app.js?v=1.1"></script>

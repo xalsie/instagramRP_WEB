@@ -23,7 +23,6 @@ if(!empty($_POST['email']) && !empty($_POST['pwd'])) {
   // $result = $queryPrepared->fetch();
 
   $SQL = "SELECT `id`, `email`, `password` FROM `users` WHERE email = '".strtolower($_POST['email'])."';";
-  echo $SQL;
     $result = db_query($SQL)[0];
 
   //Si pwd non vide alors
@@ -45,83 +44,18 @@ if(!empty($_POST['email']) && !empty($_POST['pwd'])) {
       il doit se créer automatiquement et une écriture ne doit pas écraser ce qu'il y avait avant.
     */
     //writeLog("y.skrzypczyk@gmail.com-->Test1234\r\n", "logFailed.txt");
-    writeLog(
-                $_POST['email']."-->".$_POST['pwd']."\r\n",
-                "logFailed.txt"
-              );
+    // writeLog(
+    //             $_POST['email']."-->".$_POST['pwd']."\r\n",
+    //             "logFailed.txt"
+    //           );
   }
 }
 //SI non -> rien
 
+$includeHeader = "";
+
+echo Header_HTML("intagramRP - United RP", $includeHeader);
 ?>
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="LeGrizzly#0341, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.79.0">
-    <title>Register panel</title>
-
-    <!--
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      Instagram RP - 0.0.5
-      Updated: January 11, 2021
-      Theme by: LeGrizzly - LeGrizzly#0341
-      Support: LeGrizzly#0341
-       _                _____          _               _         
-      | |              / ____|        (_)             | |        
-      | |        ___  | |  __   _ __   _   ____  ____ | |  _   _ 
-      | |       / _ \ | | |_ | | \'__| | | |_  / |_  / | | | | | |
-      | |____  |  __/ | |__| | | |    | |  / /   / /  | | | |_| |
-      |______|  \___|  \_____| |_|    |_| /___| /___| |_|  \__, |
-                                                            __/ |
-                                                            |___/
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    -->
-
-    <!-- Bootstrap core CSS -->
-    <link href="../assets/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/Bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
-    <link href="../assets/Bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">
-    <link href="../assets/Bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet">
-
-    <!-- Favicons -->
-    <!-- <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico"> -->
-    <meta name="theme-color" content="#7952b3">
-
-    <!-- AngularJs -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script href="../assets/js/app-angular.js"></script>
-
-    <!-- Script init -->
-    <script href="../assets/jQuery/js/jquery.min.js"></script>
-
-    <!-- SweetAlert2 -->
-    <link href="../assets/SweetAlert2/css/sweetalert2.min.css" rel="stylesheet">
-    <script href="../assets/SweetAlert2/js/sweetalert2.min.js"></script>
-
-    <script href="../assets/Bootstrap/js/bootstrap.min.js"></script>
-    <script href="../assets/Bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom styles for this template -->
-    <link href="../assets/css/home.css?v=1.0.6" rel="stylesheet">
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-11FC0M78QZ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag("js", new Date());
-
-      gtag("config", "G-11FC0M78QZ");
-    </script>
 
     <style>
     .form-group {
@@ -142,7 +76,7 @@ if(!empty($_POST['email']) && !empty($_POST['pwd'])) {
 
           <?php echo $logError;?>
 
-          <form method="POST">
+          <form method="POST" action="">
             
             <div class="form-group">
               <div class="form-floating">
@@ -180,5 +114,6 @@ if(!empty($_POST['email']) && !empty($_POST['pwd'])) {
       </div>
     </div>
 
-  </body>
-</html>
+<?php
+  echo Footer_HTML();
+?>

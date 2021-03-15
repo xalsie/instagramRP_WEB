@@ -18,7 +18,7 @@ function Header_HTML($Title="", $IncludeHeader="") {
 
     <!--
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      Instagram RP - 0.0.5
+      Instagram RP - 0.1.9
       Updated: January 11, 2021
       Theme by: LeGrizzly - LeGrizzly#0341
       Support: LeGrizzly#0341
@@ -34,10 +34,10 @@ function Header_HTML($Title="", $IncludeHeader="") {
     -->
 
     <!-- Bootstrap core CSS -->
-    <link href="./assets/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./assets/Bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
-    <link href="./assets/Bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">
-    <link href="./assets/Bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet">
+    <link href="/assets/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/Bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
+    <link href="/assets/Bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">
+    <link href="/assets/Bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet">
 
     <!-- Favicons -->
     <!-- <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -50,19 +50,19 @@ function Header_HTML($Title="", $IncludeHeader="") {
 
     <!-- AngularJs -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="./assets/js/app-angular.js"></script>
+    <script src="/assets/js/app-angular.js"></script>
 
     <!-- Script init -->
-    <script src="./assets/jQuery/js/jquery.min.js"></script>
+    <script src="/assets/jQuery/js/jquery.min.js"></script>
 
     <!-- SweetAlert2 -->
-    <link href="./assets/SweetAlert2/css/sweetalert2.min.css" rel="stylesheet">
-    <script src="./assets/SweetAlert2/js/sweetalert2.min.js"></script>
+    <link href="/assets/SweetAlert2/css/sweetalert2.min.css" rel="stylesheet">
+    <script src="/assets/SweetAlert2/js/sweetalert2.min.js"></script>
 
-    <script src="./assets/Bootstrap/js/bootstrap.min.js"></script>
-    <script src="./assets/Bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/Bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/Bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="./assets/Isotope/js/isotope.pkgd.min.js"></script>
+    <script src="/assets/Isotope/js/isotope.pkgd.min.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-11FC0M78QZ"></script>
@@ -92,7 +92,7 @@ function Header_HTML($Title="", $IncludeHeader="") {
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="./assets/css/home.css?v=1.0.6" rel="stylesheet">
+    <link href="/assets/css/home.css?v=1.1.5" rel="stylesheet">
 	
 	<!-- Import Auto script -->
 	'.$IncludeHeader.'
