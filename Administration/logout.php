@@ -6,14 +6,14 @@ if (empty(@$_SERVER["DOCUMENT_ROOT"]) || @$_SERVER["DOCUMENT_ROOT"] == "C:/wamp6
 }
 include_once($path."/includes/inc.php");
 
-if (isConnected()) {
-    $query = "UPDATE web_users SET 
-            token= NULL  
-            WHERE id=".$_SESSION["userid"]." 
-            AND email='".$_SESSION["email"]."'";
+// if (isConnected()) {
+//     $query = "UPDATE web_users SET 
+//             token= NULL  
+//             WHERE id=".$_SESSION["userid"]." 
+//             AND email='".$_SESSION["email"]."'";
 
-    $result = db_execute($SQL);
-}
+//     $result = db_execute($SQL);
+// }
 
 session_destroy();
 header("Location: ../index.php");

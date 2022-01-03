@@ -1,4 +1,4 @@
-# intagramRP_WEB
+# instagramRP_WEB
 
 Description : Create Fake instagramRP for UNITED RP beta
 

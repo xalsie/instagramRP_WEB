@@ -51,6 +51,7 @@ function Header_HTML($Title="", $IncludeHeader="") {
     <!-- AngularJs -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="/assets/js/app-angular.js"></script>
+    <script src="/assets/js/infinite-scroll.js"></script>
 
     <!-- Script init -->
     <script src="/assets/jQuery/js/jquery.min.js"></script>
@@ -98,7 +99,7 @@ function Header_HTML($Title="", $IncludeHeader="") {
 	'.$IncludeHeader.'
 
   </head>
-  <body ng-controller="appSidebar">';
+  <body>';
 	return $ret;
 }
 	

@@ -10,39 +10,20 @@ $logError = "";
 
 //est ce que j'ai un email un mot de passe dans $_POST
 if(!empty($_POST['email']) && !empty($_POST['pwd'])) {
-//SI oui
-  //Connexion à la bdd
-  // $pdo = connectDB();
-  // //"SELECT pwd FROM n2p_users WHERE email=:email"
-  // $queryPrepared = $pdo->prepare("SELECT id, email, pwd FROM users WHERE email=:email");
-  // //execute
-  // $queryPrepared->execute([
-  //                           ":email"=>strtolower($_POST['email'])
-  //                         ]);
-  // //fetch
-  // $result = $queryPrepared->fetch();
 
-  $SQL = "SELECT `id`, `email`, `password` FROM `users` WHERE email = '".strtolower($_POST['email'])."';";
+  $SQL = "SELECT `id`, `uuid_discord`, `email`, `password` FROM `users` WHERE email = '".strtolower($_POST['email'])."';";
     $result = db_query($SQL)[0];
 
   //Si pwd non vide alors
   if(!empty($result["password"]) && password_Verify($_POST['pwd'], $result["password"]) ){
-  //password_verify
-    //SI oui -> Afficher OK 
-    
-    //$result = [ "id"=>"1", "email"=>"gg@gmail.com", "pwd"=>"gdfgsd"]
+
     login($result);
 
     header("Location: ../index.php");
 
   }else{
-    //SI non -> Afficher dans une alert rouge "identifiants incorrects"
     $logError = "<div class='alert alert-danger'>Identifiants incorrects</div>";
-    /*
-      A travers une fonction (writeLog) écrivez dans un fichier txt à la racine du projet
-      la combinaisons email et mdp  dedans. Attention si le fichier txt n'existe pas 
-      il doit se créer automatiquement et une écriture ne doit pas écraser ce qu'il y avait avant.
-    */
+
     //writeLog("y.skrzypczyk@gmail.com-->Test1234\r\n", "logFailed.txt");
     // writeLog(
     //             $_POST['email']."-->".$_POST['pwd']."\r\n",
@@ -50,7 +31,6 @@ if(!empty($_POST['email']) && !empty($_POST['pwd'])) {
     //           );
   }
 }
-//SI non -> rien
 
 $includeHeader = "";
 

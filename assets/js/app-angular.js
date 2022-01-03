@@ -1,13 +1,14 @@
 (function(angular) {
     'use strict';
-    var app = angular.module('appRoot', []);
+    var app = angular.module('appRoot', ['infinite-scroll']);
 
-    app.controller('appSidebar', ['$scope', '$http', function($scope, $http) {
+    app.controller('appCommon', ['$scope', '$http', function($scope, $http) {
         $scope.getAuth = false;
         $scope.responseMap = false;
         $scope.nameRP = false;
         $scope.nameDiscord = false;
         $scope.load= false;
+        $scope.limit = 25;
 
         $scope.tab = 2;
 
@@ -19,9 +20,8 @@
                 return false;
             }
 
-            $scope.responseMap = response.data;
-            $scope.firstName= response.data[0].nameRP;
-            $scope.lastName= response.data[0].nameDiscord;
+            $scope.compteName= response.data[0].compteName;
+            $scope.discord_name= response.data[0].discord_name;
 
             $scope.getAuth= response.data[1];
 
@@ -30,45 +30,95 @@
             }
         });
         
-        $scope.setTab = function(newTab) {
-            $scope.tab = newTab;
-        };
+      $scope.setTab = function(newTab) {
+          $scope.tab = newTab;
+      };
+  
+      $scope.isSet = function(tabNum) {
+          let $grid = $('.grid');
+
+          // setTimeout(() => {
+          //     let $grid = $('.grid');
+          //         $grid.isotope('layout');
+          // }, 300);
+
+          // bind event listener to be triggered just once. note ONE not ON
+          // $grid.one( 'arrangeComplete', function() {
+          //     if (!$scope.load) {
+          //         console.log("load finish");
+
+          //         setTimeout(() => {
+          //             $("#sidebarMenu").removeClass("removeForAlign").css("top", "48.1px");
+          //         }, 300);
+
+          //         setTimeout(() => {
+          //             $("#sidebarMenu").css("top", "48px");
+          //         }, 400);
+
+          //         $scope.load= true;
+          //     }
+          // });
+          
+          return $scope.tab === tabNum;
+      };
+
+
+      $scope.getFromUrl = () => {
+        $http.get("/assets/js/appAngular.php?action=getImgProfile&limit="+$scope.limit)
+        .then(function (response) {
+          $scope.responseMap = response.data;
+        });
+      }
+      
+
+      // $scope.getFromUrl();
+
+      $scope.loadMoreProfile = function() {
+        $scope.limit += 15;
+
+        $scope.getFromUrl();
+      };
+
+    }]);
     
-        $scope.isSet = function(tabNum){
-            let $grid = $('.grid');
+    app.controller('appProfile', ['$scope', '$http', function($scope, $http) {
+      $scope.responseMap = false;
+      $scope.discord_name = false;
+      $scope.compteName = false;
+      $scope.registerCompte = false;
+      $scope.limit = 25;
 
-            // if (tabNum == '4' && $scope.getAuth) {
-                // console.log("#### START");
-                // console.log(tabNum);
-                // console.log($scope.getAuth);
-                // console.log("#### END");
-            //     window.location = "/Profile/index.php?userid="+$scope.responseMap[0].id;
-            // }
+      $scope.urlParams = () => {
+        var urlParams = new URLSearchParams(window.location.search);
+        return Array(urlParams.get('userid'));
+      }
+    
+      $http.get("/Profile/assets/appAngular.php?action=getUser&userid="+$scope.urlParams()[0])
+        .then(function (response) {
+            console.log(response);
 
-            setTimeout(() => {
-                let $grid = $('.grid');
-                    $grid.isotope('layout');
-            }, 300);
+            $scope.registerCompte = !response.data[0];
+            $scope.compteName = response.data[1].compteName;
+            $scope.discord_name = response.data[1].discord_name;
+        });
 
-            // bind event listener to be triggered just once. note ONE not ON
-            $grid.one( 'arrangeComplete', function() {
-                if (!$scope.load) {
-                    console.log("load finish");
+        $scope.getFromUrl = () => {
+          $http.get("/Profile/assets/appAngular.php?action=getImage&userid="+$scope.urlParams()[0]+"&limit="+$scope.limit)
+          .then(function (response) {
+            $scope.responseMap = response.data;
+          });
+        }
+        
 
-                    setTimeout(() => {
-                        $("#sidebarMenu").removeClass("removeForAlign").css("top", "48.1px");
-                    }, 300);
+        $scope.getFromUrl();
 
-                    setTimeout(() => {
-                        $("#sidebarMenu").css("top", "48px");
-                    }, 400);
+        $scope.loadMoreProfile = function() {
+          $scope.limit += 15;
 
-                    $scope.load= true;
-                }
-            });
-            
-            return $scope.tab === tabNum;
+          $scope.getFromUrl();
         };
+
+
     }]);
 
 })(window.angular);

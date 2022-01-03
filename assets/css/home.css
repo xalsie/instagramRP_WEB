@@ -118,6 +118,10 @@ hr {
   display: block !important;
 }
 
+.navbar.sticky-top.flex-md-nowrap.p-0 {
+  align-items: flex-start;
+}
+
 /*-------------------------*\
     $NAV BAR
 \*-------------------------*/
@@ -156,6 +160,7 @@ hr {
 
 .navbar-brand.logo-webfont {
   display: block;
+  padding-top: 10px;
 }
 
 .active {

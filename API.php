@@ -1,5 +1,11 @@
 <?php
-  include_once("./includes/inc.php");
+if (empty(@$_SERVER["DOCUMENT_ROOT"]) || @$_SERVER["DOCUMENT_ROOT"] == "C:/wamp64/www") {
+  $path = "C:/wamp64/www/intagramRP_WEB";
+} else {
+  $path = $_SERVER["DOCUMENT_ROOT"];
+}
+
+  include_once($path."/includes/inc.php");
 
   date_default_timezone_set('UTC');
 
